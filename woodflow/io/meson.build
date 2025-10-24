@@ -1,5 +1,13 @@
+# IO library (static by default)
+io_lib = static_library(
+  'woodflow_io',
+  'io.cpp',
+  include_directories: root_inc,
+  install: true,
+)
 
-# For now, just provide include paths
-core_dep = declare_dependency(
-  include_directories: root_inc
+# Dependency for other parts of the project
+io_dep = declare_dependency(
+  link_with: io_lib,
+  include_directories: root_inc,
 )

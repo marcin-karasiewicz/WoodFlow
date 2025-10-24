@@ -3,9 +3,10 @@ builddir/
 build/
 
 # Meson subprojects (downloaded dependencies)
-subprojects/*/
+!subprojects/.wraplock
 !subprojects/*.wrap
-!subprojects/packagefiles
+subprojects/*/
+subprojects/packagecache/
 
 # IDE
 .vscode/

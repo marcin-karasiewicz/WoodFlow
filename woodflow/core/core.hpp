@@ -4,11 +4,9 @@
 
 namespace woodflow::core {
 struct Core {
-  void initialize() {
-    // Implementation for core initialization
-  }
+  void initialize();
 
 private:
-  io::Io io_handler_;
+  [[maybe_unused]] io::Io io_handler_;
 };
 } // namespace woodflow::core
