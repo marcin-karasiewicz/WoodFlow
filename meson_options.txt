@@ -1,0 +1,2 @@
+# Project-specific options
+option('tests', type: 'boolean', value: false, description: 'Build unit tests')
