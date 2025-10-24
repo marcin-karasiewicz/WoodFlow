@@ -45,3 +45,4 @@ root_inc = include_directories('.')
 
 # Subdirectories
 subdir('woodflow')
+subdir('tests')

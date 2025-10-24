@@ -1,5 +1,5 @@
 Checks: >
-  *, -llvmlibc-*, -modernize-use-trailing-return-type, -google-readability-todo
+  *, -llvmlibc-*, -modernize-use-trailing-return-type, -google-readability-todo, -fuchsia-default-arguments-calls
 
 WarningsAsErrors: "*"
 UseColor: false
