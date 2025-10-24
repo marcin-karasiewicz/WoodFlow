@@ -1,0 +1,14 @@
+# Build directories
+builddir/
+build/
+
+# Meson subprojects (downloaded dependencies)
+subprojects/*/
+!subprojects/*.wrap
+!subprojects/packagefiles
+
+# IDE
+.vscode/
+
+# Clangd cache
+.cache/
