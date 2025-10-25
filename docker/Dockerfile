@@ -18,12 +18,4 @@ RUN pip3 install --no-cache-dir \
 ENV CC=clang \
     CXX=clang++
 
-# Create non-root user
-RUN useradd -m -u 1000 -s /bin/bash ci
-
 WORKDIR /workspace
-
-# Change ownership of workspace to ci user
-RUN chown -R ci:ci /workspace
-
-USER ci
