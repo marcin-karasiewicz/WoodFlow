@@ -8,12 +8,18 @@ jobs:
   ci:
     name: CI
     runs-on: self-hosted
-    container: woodflow-ci-runner:local
+    container:
+      image: ghcr.io/marcin-karasiewicz/woodflow/ci-runner:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Fix git ownership
+        run: git config --global --add safe.directory '*'
       - name: Run pre-commit
         run: pre-commit run --all-files
       - name: Setup Meson

@@ -1,21 +1,17 @@
-# Ubuntu 25.10 based CI image for WoodFlow project
-FROM ubuntu:25.10
+# Fedora 43 based CI image for WoodFlow project
+FROM fedora:43
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install -y \
-    build-essential \
+# Install build dependencies
+RUN dnf install -y \
     clang \
-    clang-tidy \
-    clang-format \
+    clang-tools-extra \
     ninja-build \
-    pkg-config \
     python3 \
     python3-pip \
     git \
-    && rm -rf /var/lib/apt/lists/*
+    && dnf clean all
 
-RUN pip3 install --no-cache-dir --break-system-packages \
+RUN pip3 install --no-cache-dir \
     meson>=1.9.0 \
     pre-commit
 
