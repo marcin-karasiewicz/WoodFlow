@@ -7,27 +7,17 @@ on:
 jobs:
   ci:
     name: CI
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    container: woodflow-ci-runner:local
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clang clang-tidy clang-format ninja-build
-      - name: Install Python dependencies
-        run: pip3 install meson>=1.9.0 pre-commit
       - name: Run pre-commit
         run: pre-commit run --all-files
       - name: Setup Meson
-        run: |
-          CC=clang CXX=clang++ meson setup builddir --native-file clang-native.ini
+        run: CC=clang CXX=clang++ meson setup builddir --native-file clang-native.ini
       - name: Build
         run: meson compile -C builddir
       - name: Run tests
