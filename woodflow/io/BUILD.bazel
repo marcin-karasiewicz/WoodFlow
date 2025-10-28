@@ -1,0 +1,22 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+    name = "io",
+    srcs = [
+        "io.cpp",
+    ],
+    hdrs = [
+        "io.hpp",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "io_test",
+    srcs = ["io_test.cpp"],
+    deps = [
+        ":io",
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
+    ],
+)

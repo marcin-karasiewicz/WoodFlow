@@ -1,21 +1,25 @@
-# Fedora 43 based CI image for WoodFlow project
-FROM fedora:43
+FROM alpine:latest
 
-# Install build dependencies
-RUN dnf install -y \
-    clang \
-    clang-tools-extra \
-    ninja-build \
-    python3 \
-    python3-pip \
+RUN apk add --no-cache \
     git \
-    && dnf clean all
+    curl \
+    python3 \
+    py3-pip \
+    bash
 
-RUN pip3 install --no-cache-dir \
-    meson>=1.9.0 \
-    pre-commit
+RUN pip3 install --no-cache-dir --break-system-packages pre-commit
 
-ENV CC=clang \
-    CXX=clang++
+# Install bazelisk
+RUN curl -fsSL -o /usr/local/bin/bazelisk \
+    https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64 \
+    && chmod +x /usr/local/bin/bazelisk \
+    && ln -sf /usr/local/bin/bazelisk /usr/local/bin/bazel
 
+
+# Setup non-root user and GitHub Actions cache compatibility
+RUN adduser -D ci \
+    && mkdir -p /workspace \
+    && chown ci:ci /workspace
+
+USER ci
 WORKDIR /workspace

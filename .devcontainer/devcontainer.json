@@ -1,0 +1,59 @@
+{
+    "name": "WoodFlow-Dev",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "installOhMyZsh": true,
+            "configureZshAsDefaultShell": true,
+            "username": "vscode",
+            "userUid": "automatic",
+            "userGid": "automatic"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.14"
+        },
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": true
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers-community/features/bazel:1": {
+            "bazelisk_version": "v1.27.0",
+            "buildifier_version": "v8.2.1"
+        }
+    },
+    "remoteUser": "vscode",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "llvm-vs-code-extensions.vscode-clangd",
+                "bazelbuild.vscode-bazel"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                },
+                "clangd.path": "${containerWorkspaceFolder}/bazel-${containerWorkspaceFolderBasename}/external/toolchains_llvm++llvm+llvm_toolchain/bin/clangd",
+                "clangd.arguments": [
+                    "--compile-commands-dir=${workspaceFolder}/builddir",
+                    "--header-insertion=never",
+                    "--query-driver=**"
+                ],
+                "bazel.buildifierExecutable": "/usr/local/bin/buildifier"
+            }
+        }
+    },
+    "mounts": [
+        // "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached,readonly"
+    ],
+    "postCreateCommand": "bash -c 'mkdir -p ~/.zsh/completion && curl -L https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel > ~/.zsh/completion/_bazel && echo \"fpath=(~/.zsh/completion \\$fpath)\" >> ~/.zshrc && echo \"autoload -U compinit && compinit\" >> ~/.zshrc && echo \"alias bazel=bazelisk\" >> ~/.zshrc && echo \"compdef bazelisk=bazel\" >> ~/.zshrc'"
+}

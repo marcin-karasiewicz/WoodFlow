@@ -1,0 +1,25 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+    name = "core",
+    srcs = [
+        "core.cpp",
+    ],
+    hdrs = [
+        "core.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//woodflow/io",
+    ],
+)
+
+cc_test(
+    name = "core_test",
+    srcs = ["core_test.cpp"],
+    deps = [
+        ":core",
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
+    ],
+)

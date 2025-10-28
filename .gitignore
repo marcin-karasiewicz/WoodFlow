@@ -1,15 +1,7 @@
-# Build directories
-builddir/
-build/
-
-# Meson subprojects (downloaded dependencies)
-!subprojects/.wraplock
-!subprojects/*.wrap
-subprojects/*/
-subprojects/packagecache/
-
-# IDE
-.vscode/
+# Bazel directories
+bazel-*
+MODULE.bazel.lock
+external/
 
 # Clangd cache
 .cache/

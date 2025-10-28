@@ -8,4 +8,4 @@ void Io::read() {
 void Io::write() {
   // Implementation for writing
 }
-} // namespace woodflow::io
+}  // namespace woodflow::io
