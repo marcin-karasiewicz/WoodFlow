@@ -18,5 +18,6 @@ cc_test(
         ":io",
         "@googletest//:gtest",
         "@googletest//:gtest_main",
+        "@mp-units//:mp-units",
     ],
 )
