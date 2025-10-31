@@ -1,0 +1,60 @@
+# Use Clang 21 toolchain automatically
+build --incompatible_enable_cc_toolchain_resolution
+
+# Common build options - C++23
+build --cxxopt=-std=c++23
+build --host_cxxopt=-std=c++23
+
+# Warnings - Maximum strictness
+build --cxxopt=-Wall
+build --cxxopt=-Wextra
+build --cxxopt=-Wpedantic
+build --cxxopt=-Werror
+build --cxxopt=-Wconversion
+build --cxxopt=-Wsign-conversion
+build --cxxopt=-Wold-style-cast
+build --cxxopt=-Wredundant-decls
+build --cxxopt=-Wshadow
+build --cxxopt=-Wundef
+build --cxxopt=-Wunused
+build --cxxopt=-Wunused-parameter
+build --cxxopt=-Wfloat-equal
+build --cxxopt=-Wnull-dereference
+
+# Color output
+common --color=yes
+
+# Sanitizer configs
+build:asan --copt=-fsanitize=address
+build:asan --linkopt=-fsanitize=address
+build:asan --copt=-fno-omit-frame-pointer
+build:asan --copt=-O1
+
+build:ubsan --copt=-fsanitize=undefined
+build:ubsan --linkopt=-fsanitize=undefined
+build:ubsan --copt=-fno-omit-frame-pointer
+build:ubsan --copt=-O1
+
+build:tsan --copt=-fsanitize=thread
+build:tsan --linkopt=-fsanitize=thread
+build:tsan --copt=-fno-omit-frame-pointer
+build:tsan --copt=-O1
+
+build:msan --copt=-fsanitize=memory
+build:msan --linkopt=-fsanitize=memory
+build:msan --copt=-fno-omit-frame-pointer
+build:msan --copt=-O1
+
+# Coverage config
+coverage --combined_report=lcov
+coverage --instrumentation_filter="//woodflow/..."
+
+# CI config
+build:ci --show_timestamps
+build:ci --announce_rc
+build:ci --verbose_failures
+build:ci --jobs=auto
+
+# Cache configs
+common --disk_cache=/tmp/bazel-disk-cache
+common --repository_cache=/tmp/bazel-repo-cache

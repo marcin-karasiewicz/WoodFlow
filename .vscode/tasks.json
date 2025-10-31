@@ -1,0 +1,229 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "refresh-compile-commands",
+            "type": "shell",
+            "command": "bazel run //:refresh_compile_commands",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "pre-commit",
+            "type": "shell",
+            "command": "pre-commit run --all-files",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "bazel build //...",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "rebuild",
+            "type": "shell",
+            "command": "bazel clean && bazel build //...",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "bazel clean",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "bazel test //...",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        // {
+        //     "label": "test:lint",
+        //     "type": "shell",
+        //     "command": "bazel build --config=lint //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "test:lint-fast",
+        //     "type": "shell",
+        //     "command": "bazel build --config=lint-fast //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "format-check",
+        //     "type": "shell",
+        //     "command": "bazel run //:format-check",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "test:format",
+        //     "type": "shell",
+        //     "command": "bazel test --test_tag_filters=format //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "run",
+        //     "type": "shell",
+        //     "command": "bazel run //woodflow:woodflow",
+        //     "group": "none",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "format",
+        //     "type": "shell",
+        //     "command": "bazel run //:format",
+        //     "group": "none",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "test:asan",
+        //     "type": "shell",
+        //     "command": "bazel build --config=asan //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "test:ubsan",
+        //     "type": "shell",
+        //     "command": "bazel build --config=ubsan //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "test:tsan",
+        //     "type": "shell",
+        //     "command": "bazel build --config=tsan //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "test:msan",
+        //     "type": "shell",
+        //     "command": "bazel build --config=msan //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "label": "test:coverage",
+        //     "type": "shell",
+        //     "command": "bazel coverage //...",
+        //     "group": "test",
+        //     "presentation": {
+        //         "echo": true,
+        //         "reveal": "always",
+        //         "focus": false,
+        //         "panel": "shared"
+        //     },
+        //     "problemMatcher": []
+        // }
+    ]
+}

@@ -1,6 +1,4 @@
-Checks: >
-  *, -llvmlibc-*, -modernize-use-trailing-return-type, -google-readability-todo, -fuchsia-default-arguments-calls, -clang-diagnostic-builtin-macro-redefined, -llvm-header-guard, -portability-avoid-pragma-once
-
+Checks: "readability-identifier-naming, -clang-diagnostic-builtin-macro-redefined"
 WarningsAsErrors: "*"
 UseColor: false
 SystemHeaders: false

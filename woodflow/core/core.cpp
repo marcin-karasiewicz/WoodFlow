@@ -7,4 +7,4 @@ void Core::initialize() {
   // TODO: Add io functionality when needed
 }
 
-} // namespace woodflow::core
+}  // namespace woodflow::core

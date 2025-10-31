@@ -6,4 +6,4 @@ struct Io {
   void read();
   void write();
 };
-} // namespace woodflow::io
+}  // namespace woodflow::io

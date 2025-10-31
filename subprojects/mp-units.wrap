@@ -1,8 +1,0 @@
-[wrap-git]
-url = https://github.com/mpusz/mp-units.git
-revision = v2.3.0
-depth = 1
-patch_directory = mp-units
-
-[provide]
-mp-units = mp_units_dep

@@ -6,7 +6,7 @@ namespace woodflow::core {
 struct Core {
   void initialize();
 
-private:
+ private:
   [[maybe_unused]] io::Io io_handler_;
 };
-} // namespace woodflow::core
+}  // namespace woodflow::core
